@@ -4,3 +4,9 @@
 [submodule "common/hardware/Beirdo-KiCad-Libraries"]
 	path = common/hardware/Beirdo-KiCad-Libraries
 	url = https://github.com/Beirdo/KiCad-Libraries
+[submodule "hardware/git-libraries/SparkFun-KiCad-Libraries"]
+	path = hardware/git-libraries/SparkFun-KiCad-Libraries
+	url = https://github.com/Beirdo/SparkFun-KiCad-Libraries
+[submodule "hardware/git-libraries/Beirdo-KiCad-Libraries"]
+	path = hardware/git-libraries/Beirdo-KiCad-Libraries
+	url = https://github.com/Beirdo/KiCad-Libraries
