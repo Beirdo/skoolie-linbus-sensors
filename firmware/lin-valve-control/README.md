@@ -3,4 +3,4 @@ Boards:
   - Choose "Arduino Nano"
 
 Libraries:
-
+  - https://github.com/Beirdo/Arduino-LIN
