@@ -10,3 +10,9 @@
 [submodule "hardware/git-libraries/Beirdo-KiCad-Libraries"]
 	path = hardware/git-libraries/Beirdo-KiCad-Libraries
 	url = https://github.com/Beirdo/KiCad-Libraries
+[submodule "firmware/lin-valve-control/libs/Arduino-LIN"]
+	path = firmware/lin-valve-control/libs/Arduino-LIN
+	url = https://github.com/Beirdo/Arduino-LIN.git
+[submodule "firmware/lib/Arduino-LIN"]
+	path = firmware/lib/Arduino-LIN
+	url = https://github.com/Beirdo/Arduino-LIN
