@@ -16,3 +16,6 @@
 [submodule "firmware/lib/Arduino-LIN"]
 	path = firmware/lib/Arduino-LIN
 	url = https://github.com/Beirdo/Arduino-LIN
+[submodule "firmware/lib/Arduino-MultiWire"]
+	path = firmware/lib/Arduino-MultiWire
+	url = https://github.com/Beirdo/Arduino-MultiWire

@@ -1,26 +1,10 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include <lin_stack.h>
+#include <LINBus_stack.h>
 #include <EEPROM.h>
 
 #include "project.h"
 #include "ntc_thermistor.h"
-
-enum {
-  REG_CONTROL,
-  REG_MAX_WRITEABLE,
-};
-
-enum {
-  REG_STATUS = REG_MAX_WRITEABLE,
-  REG_FLOW_HI,
-  REG_FLOW_LO,
-  REG_TEMP_HI,
-  REG_TEMP_LO,
-  REG_MAX_READ_ONLY,
-};
-
-#define MAX_REGISTERS REG_MAX_READ_ONLY
 
 uint8_t registerIndex = 0xFF;
 uint8_t registerBank[MAX_REGISTERS] = {0};
@@ -35,7 +19,7 @@ void setOpenDrainOutput(uint8_t pin, bool value, bool invert = false);
 int getFlowPulsePerSec(void);
 void flow_pulse_isr(void);
 
-lin_stack *linbus;
+LINBus_stack *linbus;
 NTCThermistor thermistor(25, 50, 10000, 3545, coolant_ntc_resistance_table, coolant_ntc_resistance_count, coolant_ntc_offset);
 
 
@@ -88,7 +72,7 @@ void setup()
     linbus_address = 0x1F;
     EEPROM.update(0, linbus_address);
   }
-  linbus = new lin_stack(Serial, 19200, PIN_LIN_WAKE, linbus_address);
+  linbus = new LINBus_stack(Serial, 19200, PIN_LIN_WAKE, PIN_LIN_SLP, linbus_address);
 
   setOpenDrainOutput(PIN_LIN_SLP, false, true);
   setOpenDrainOutput(PIN_LIN_WAKE, false, true);
@@ -181,6 +165,7 @@ void loop()
   registerBank[REG_FLOW_LO] = LO_BYTE(value);
 
   int read;
+  // *** TODO ***  wait for a break!?
   if (linbus->read(linbus_buf, linbus_buf_len, &read)) {
     if (read) { 
       // this was a packet written to us

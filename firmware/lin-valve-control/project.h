@@ -30,6 +30,22 @@
 #define VALVE1_CLOSE      0x02
 #define VALVE1_OPEN       0x01
 
+enum {
+  REG_CONTROL,
+  REG_MAX_WRITEABLE,
+};
+
+enum {
+  REG_STATUS = REG_MAX_WRITEABLE,
+  REG_FLOW_HI,
+  REG_FLOW_LO,
+  REG_TEMP_HI,
+  REG_TEMP_LO,
+  REG_MAX_READ_ONLY,
+};
+
+#define MAX_REGISTERS REG_MAX_READ_ONLY
+
 #define HI_BYTE(x)     ((uint8_t)(((int)(x) >> 8) & 0xFF))
 #define LO_BYTE(x)     ((uint8_t)(((int)(x) & 0xFF)))
 
