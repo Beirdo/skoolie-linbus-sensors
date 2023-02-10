@@ -6,7 +6,7 @@
 #define PIN_RXD           0
 #define PIN_TXD           1
 #define PIN_FLOW_PULSE    2
-#define PIN_MOTOR_FAULT   3
+#define PIN_FAN_PWM       3
 #define PIN_VALVE1_INP    4
 #define PIN_VALVE1_INN    5
 #define PIN_VALVE1_CLOSED 6
@@ -19,6 +19,8 @@
 #define PIN_ONBOARD_LED   13
 #define PIN_MOTOR_EN      14
 #define PIN_LIN_WAKE      15
+#define PIN_MOTOR_FAULT   16
+#define PIN_PUMP_EN       17
 #define PIN_COOLANT_NTC   A7
 
 #define VALVE2_CLOSED     0x80
