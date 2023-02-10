@@ -87,6 +87,8 @@ void setup()
   pinMode(PIN_VALVE1_OPENED, INPUT);
 
   pinMode(PIN_FLOW_PULSE, INPUT);
+  pinMode(PIN_FAN_PWM, OUTPUT);
+  analogWrite(PIN_FAN_PWM, 0);
 
   digitalWrite(PIN_VALVE2_INP, LOW);
   pinMode(PIN_VALVE2_INP, OUTPUT);
@@ -101,6 +103,9 @@ void setup()
 
   digitalWrite(PIN_MOTOR_EN, LOW);
   pinMode(PIN_MOTOR_EN, OUTPUT);
+
+  digitalWrite(PIN_PUMP_EN, LOW);
+  pinMode(PIN_PUMP_EN, OUTPUT);
 
   pinMode(PIN_COOLANT_NTC, INPUT);
 
@@ -119,8 +124,8 @@ void loop()
 
   // Let's do this.  Filter the control of the valves
   uint8_t mask = VALVE2_CLOSED | VALVE2_OPENED | VALVE1_CLOSED | VALVE1_OPENED;
-  uint8_t control = registerBank[REG_CONTROL] & (mask >> 2);
-  uint8_t status  = (registerBank[REG_STATUS] & mask) >> 2;
+  uint8_t control = registerBank[REG_VALVE_CONTROL] & (mask >> 2);
+  uint8_t status  = (registerBank[REG_VALVE_STATUS] & mask) >> 2;
 
   // Clear the request if it's already done
   control ^= status;
@@ -148,7 +153,7 @@ void loop()
   status |= digitalRead(PIN_VALVE1_CLOSED) ? VALVE1_CLOSED : 0;
   status |= digitalRead(PIN_VALVE1_OPENED) ? VALVE1_OPENED : 0;
 
-  registerBank[REG_STATUS] = status;
+  registerBank[REG_VALVE_STATUS] = status;
 
   int value = analogRead(PIN_COOLANT_NTC);
   int resistance = value * 10000 / (4096 - value);
@@ -164,13 +169,32 @@ void loop()
   registerBank[REG_FLOW_HI] = HI_BYTE(value);
   registerBank[REG_FLOW_LO] = LO_BYTE(value);
 
+  control = registerBank[REG_COOLING_CONTROL]
+  int fan_target = clamp<int>(control & 0x7F, 0, 100);
+  pump_on = control & 0x80;
+
+  if (!fan_target) {
+    fan_percent = 0;
+  } else {
+    int fan_delta = clamp<int>(fan_target - fan_percent, -10, 10);
+    fan_percent = clamp<int>(fan_percent + fan_delta, 0, 100);
+  }
+
+  analogWrite(PIN_FAN_PWM, map<int>(fan_percent, 0, 100, 0, 255));
+  digitalWrite(PIN_PUMP_EN, pump_on);
+
+  status = (pump_on ? 0x80 : 0x00) | fan_percent;
+  registerBank[REG_COOLING_STATUS] = status;
+
   int read;
   // *** TODO ***  wait for a break!?
   if (linbus->read(linbus_buf, linbus_buf_len, &read)) {
     if (read) { 
       // this was a packet written to us
-      if (linbus_buf[0] == 0x00) {
-        registerBank[REG_CONTROL] = linbus_buf[1];
+      if (linbus_buf[0] == REG_VALVE_CONTROL) {
+        registerBank[REG_VALVE_CONTROL] = linbus_buf[1];
+      } else if (linbus_buf[0] == REG_COOLING_CONTROL) {
+        registerBank[REG_COOLING_CONTROL] = linbus_buf[1];
       } else if ((linbus_buf[0] & 0x80) == 0x80) {
         registerIndex = linbus_buf[0] & 0x7F;
       }
