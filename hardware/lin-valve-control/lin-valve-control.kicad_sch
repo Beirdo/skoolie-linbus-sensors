@@ -3003,7 +3003,7 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 311.912 38.989 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00006013734e)
-    (property "Reference" "J6" (id 0) (at 313.944 37.9222 0)
+    (property "Reference" "J7" (id 0) (at 313.944 37.9222 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Screw_Terminal_01x03" (id 1) (at 313.944 40.2336 0)
@@ -3023,7 +3023,7 @@
   (symbol (lib_id "power:GND") (at 304.292 44.069 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000060140b12)
-    (property "Reference" "#PWR026" (id 0) (at 304.292 50.419 0)
+    (property "Reference" "#PWR035" (id 0) (at 304.292 50.419 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 304.419 48.4632 0))
@@ -3112,7 +3112,7 @@
   (symbol (lib_id "Transistor_FET:2N7002") (at 184.277 111.252 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 1fd89a86-8eb3-432e-9f41-05cdfde7e9ca)
-    (property "Reference" "Q?" (id 0) (at 190.373 109.9819 0)
+    (property "Reference" "Q3" (id 0) (at 190.373 109.9819 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2N7002" (id 1) (at 190.373 112.5219 0)
@@ -3151,7 +3151,7 @@
   (symbol (lib_id "power:+12V") (at 304.292 33.655 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 269482af-35bf-499e-9fd9-bf40e6095487)
-    (property "Reference" "#PWR025" (id 0) (at 304.292 37.465 0)
+    (property "Reference" "#PWR034" (id 0) (at 304.292 37.465 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (id 1) (at 304.292 27.94 0))
@@ -3183,7 +3183,7 @@
   (symbol (lib_id "power:GND") (at 304.165 162.433 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 2b15dcfc-1520-4124-aba9-0f440be5bf33)
-    (property "Reference" "#PWR024" (id 0) (at 304.165 168.783 0)
+    (property "Reference" "#PWR033" (id 0) (at 304.165 168.783 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 304.292 166.8272 0))
@@ -3215,7 +3215,7 @@
   (symbol (lib_id "Device:R") (at 188.849 146.304 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 3656b1d6-3ef3-4dce-a95f-d7c45c1b0566)
-    (property "Reference" "R?" (id 0) (at 190.627 145.0339 0)
+    (property "Reference" "R16" (id 0) (at 190.627 145.0339 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (id 1) (at 190.627 147.5739 0)
@@ -3234,7 +3234,7 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x02") (at 311.531 129.413 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 39f5561e-62b7-4f75-be14-d9fdc2eea50f)
-    (property "Reference" "J4" (id 0) (at 313.69 129.4129 0)
+    (property "Reference" "J5" (id 0) (at 313.69 129.4129 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Screw_Terminal_01x02" (id 1) (at 313.69 131.9529 0)
@@ -3253,7 +3253,7 @@
   (symbol (lib_id "Diode:BAT54SW") (at 227.203 102.362 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 3eab5b3c-7ed0-4182-9531-a8f7c8760e9b)
-    (property "Reference" "D?" (id 0) (at 229.7684 101.0919 90)
+    (property "Reference" "D1" (id 0) (at 229.7684 101.0919 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "BAT54SW" (id 1) (at 229.7684 103.6319 90)
@@ -3273,7 +3273,7 @@
   (symbol (lib_id "power:GND") (at 304.292 135.509 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 3f7cdddd-93d2-4489-a617-17990f30cb43)
-    (property "Reference" "#PWR027" (id 0) (at 304.292 141.859 0)
+    (property "Reference" "#PWR036" (id 0) (at 304.292 141.859 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 304.292 140.97 0))
@@ -3289,7 +3289,7 @@
   (symbol (lib_id "Device:R") (at 187.96 44.196 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 4035dfa5-4d5b-415b-a92b-8dedd26cc7ae)
-    (property "Reference" "R12" (id 0) (at 190.5 42.9259 0)
+    (property "Reference" "R15" (id 0) (at 190.5 42.9259 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (id 1) (at 190.5 45.4659 0)
@@ -3368,7 +3368,7 @@
   (symbol (lib_id "Connector:DIN-5_180degree") (at 304.673 100.076 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 46c050f4-f888-4468-b7de-eb0185fb311a)
-    (property "Reference" "J2" (id 0) (at 304.6729 89.916 0))
+    (property "Reference" "J3" (id 0) (at 304.6729 89.916 0))
     (property "Value" "DIN-5_180degree" (id 1) (at 304.6729 92.456 0))
     (property "Footprint" "SparkFun-Connectors:DIN5-RA-PTH" (id 2) (at 304.673 100.076 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3405,7 +3405,7 @@
   (symbol (lib_id "Connector:DIN-5_180degree") (at 304.927 66.929 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 4db2c40f-63b9-42de-89fe-635905f124f1)
-    (property "Reference" "J3" (id 0) (at 304.9269 56.896 0))
+    (property "Reference" "J4" (id 0) (at 304.9269 56.896 0))
     (property "Value" "DIN-5_180degree" (id 1) (at 304.9269 59.436 0))
     (property "Footprint" "SparkFun-Connectors:DIN5-RA-PTH" (id 2) (at 304.927 66.929 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3439,7 +3439,7 @@
   (symbol (lib_id "power:GND") (at 227.203 113.792 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 56743bd0-c8a0-4a17-ade1-025432c6460e)
-    (property "Reference" "#PWR?" (id 0) (at 227.203 120.142 0)
+    (property "Reference" "#PWR027" (id 0) (at 227.203 120.142 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 227.203 119.126 0))
@@ -3498,7 +3498,7 @@
   (symbol (lib_id "power:GND") (at 250.571 141.732 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 5e3856f0-4f55-4eb2-9a3b-820f2ed2f81a)
-    (property "Reference" "#PWR?" (id 0) (at 250.571 148.082 0)
+    (property "Reference" "#PWR031" (id 0) (at 250.571 148.082 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 250.571 146.939 0))
@@ -3549,7 +3549,7 @@
   (symbol (lib_id "Device:R") (at 209.931 117.348 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 643429c6-4f09-450a-b177-0ad1094c5670)
-    (property "Reference" "R?" (id 0) (at 211.963 116.0779 0)
+    (property "Reference" "R18" (id 0) (at 211.963 116.0779 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10R" (id 1) (at 211.963 118.6179 0)
@@ -3568,7 +3568,7 @@
   (symbol (lib_id "Device:R") (at 169.799 111.252 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 66b95480-4179-47cf-a62d-c46817c3c966)
-    (property "Reference" "R?" (id 0) (at 169.799 104.648 90))
+    (property "Reference" "R12" (id 0) (at 169.799 104.648 90))
     (property "Value" "10R" (id 1) (at 169.799 107.188 90))
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (id 2) (at 169.799 113.03 90)
       (effects (font (size 1.27 1.27)) hide)
@@ -3583,7 +3583,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 209.931 122.936 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 6a773d6f-a6af-4b0a-a939-9c80148855e4)
-    (property "Reference" "#PWR?" (id 0) (at 209.931 129.286 0)
+    (property "Reference" "#PWR025" (id 0) (at 209.931 129.286 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 209.931 127.762 0))
@@ -3618,7 +3618,7 @@
   (symbol (lib_name "GND_2") (lib_id "power:GND") (at 186.817 118.364 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 71a9b206-c252-4951-97af-769bab6c498d)
-    (property "Reference" "#PWR?" (id 0) (at 186.817 124.714 0)
+    (property "Reference" "#PWR020" (id 0) (at 186.817 124.714 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 186.817 122.936 0))
@@ -3634,7 +3634,7 @@
   (symbol (lib_id "Transistor_FET:SUD50P04-08") (at 200.025 104.14 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 71dcefcb-d9be-4514-ae16-46458d62c1fc)
-    (property "Reference" "Q?" (id 0) (at 205.867 102.8699 0)
+    (property "Reference" "Q5" (id 0) (at 205.867 102.8699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SUD50P04-08" (id 1) (at 205.867 105.4099 0)
@@ -3670,7 +3670,7 @@
   (symbol (lib_id "Device:R") (at 197.485 44.196 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 77e0f4b4-3446-47f4-8ab9-879967f95692)
-    (property "Reference" "R13" (id 0) (at 199.39 42.9259 0)
+    (property "Reference" "R17" (id 0) (at 199.39 42.9259 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (id 1) (at 199.39 45.4659 0)
@@ -3689,7 +3689,7 @@
   (symbol (lib_name "+12V_1") (lib_id "power:+12V") (at 202.565 90.678 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 783656f2-e30c-426e-ac23-3a411bdc2c67)
-    (property "Reference" "#PWR?" (id 0) (at 202.565 94.488 0)
+    (property "Reference" "#PWR023" (id 0) (at 202.565 94.488 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (id 1) (at 202.565 86.106 0))
@@ -3790,7 +3790,7 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 311.785 157.353 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 8745d3d9-a9a9-4016-b510-a933f7f22c76)
-    (property "Reference" "J5" (id 0) (at 313.817 156.2862 0)
+    (property "Reference" "J6" (id 0) (at 313.817 156.2862 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Screw_Terminal_01x03" (id 1) (at 313.817 158.5976 0)
@@ -3810,7 +3810,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 211.963 170.942 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 89d3a676-46ee-4d78-a23c-6e0d17b95133)
-    (property "Reference" "#PWR?" (id 0) (at 211.963 177.292 0)
+    (property "Reference" "#PWR026" (id 0) (at 211.963 177.292 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 211.963 175.768 0))
@@ -3826,7 +3826,7 @@
   (symbol (lib_id "power:+3V3") (at 247.015 34.163 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8a096ae9-bcb1-4252-8b6a-102e303a1e78)
-    (property "Reference" "#PWR021" (id 0) (at 247.015 37.973 0)
+    (property "Reference" "#PWR029" (id 0) (at 247.015 37.973 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (id 1) (at 247.015 28.448 0))
@@ -3842,7 +3842,7 @@
   (symbol (lib_id "Device:R") (at 186.817 98.298 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8ad48fa0-7ec2-4558-becd-c97ffdbb37c6)
-    (property "Reference" "R?" (id 0) (at 188.595 97.0279 0)
+    (property "Reference" "R14" (id 0) (at 188.595 97.0279 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (id 1) (at 188.595 99.5679 0)
@@ -3861,7 +3861,7 @@
   (symbol (lib_id "power:GND") (at 247.142 47.625 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8b273aee-11a3-44dd-baf6-f1c94e837499)
-    (property "Reference" "#PWR022" (id 0) (at 247.142 53.975 0)
+    (property "Reference" "#PWR030" (id 0) (at 247.142 53.975 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 247.142 52.578 0))
@@ -3877,7 +3877,7 @@
   (symbol (lib_id "Transistor_FET:SUD50P04-08") (at 202.057 152.146 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 910f9893-f053-4e34-8de3-0c51ed6005eb)
-    (property "Reference" "Q?" (id 0) (at 207.899 150.8759 0)
+    (property "Reference" "Q6" (id 0) (at 207.899 150.8759 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SUD50P04-08" (id 1) (at 207.899 153.4159 0)
@@ -3897,7 +3897,7 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x04") (at 258.318 131.318 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 95ef4bb8-f5c1-4c5e-817b-ad10fe2c586a)
-    (property "Reference" "J?" (id 0) (at 261.493 131.3179 0)
+    (property "Reference" "J2" (id 0) (at 261.493 131.3179 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Screw_Terminal_01x04" (id 1) (at 261.493 133.8579 0)
@@ -3918,7 +3918,7 @@
   (symbol (lib_name "GND_2") (lib_id "power:GND") (at 188.849 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 98dd8a1f-b3f9-4850-99e2-cc0450722fe0)
-    (property "Reference" "#PWR?" (id 0) (at 188.849 172.72 0)
+    (property "Reference" "#PWR022" (id 0) (at 188.849 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 188.849 170.942 0))
@@ -3985,7 +3985,7 @@
   (symbol (lib_id "Diode:BAT54SW") (at 230.886 150.241 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid a84ec113-c3dd-405e-bd0e-c1330837f189)
-    (property "Reference" "D?" (id 0) (at 233.2228 148.9709 90)
+    (property "Reference" "D2" (id 0) (at 233.2228 148.9709 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "BAT54SW" (id 1) (at 233.2228 151.5109 90)
@@ -4005,7 +4005,7 @@
   (symbol (lib_id "Device:R") (at 211.963 165.354 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid ae6548f8-302d-49a0-a714-954ace2859b2)
-    (property "Reference" "R?" (id 0) (at 213.995 164.0839 0)
+    (property "Reference" "R19" (id 0) (at 213.995 164.0839 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10R" (id 1) (at 213.995 166.6239 0)
@@ -4024,7 +4024,7 @@
   (symbol (lib_name "+12V_1") (lib_id "power:+12V") (at 204.597 138.684 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b9476917-ebb9-4d73-81b7-af9ea06d192c)
-    (property "Reference" "#PWR?" (id 0) (at 204.597 142.494 0)
+    (property "Reference" "#PWR024" (id 0) (at 204.597 142.494 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (id 1) (at 204.597 134.112 0))
@@ -4040,7 +4040,7 @@
   (symbol (lib_id "power:GND") (at 304.927 78.105 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid bdda9754-a87c-423b-9d5d-df70280e65bb)
-    (property "Reference" "#PWR029" (id 0) (at 304.927 84.455 0)
+    (property "Reference" "#PWR038" (id 0) (at 304.927 84.455 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 304.927 83.566 0))
@@ -4110,7 +4110,7 @@
   (symbol (lib_id "Device:R") (at 171.831 159.258 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid c96972cd-e6da-4b6e-a99b-e832c513e5d0)
-    (property "Reference" "R?" (id 0) (at 171.831 152.654 90))
+    (property "Reference" "R13" (id 0) (at 171.831 152.654 90))
     (property "Value" "10R" (id 1) (at 171.831 155.194 90))
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (id 2) (at 171.831 161.036 90)
       (effects (font (size 1.27 1.27)) hide)
@@ -4125,7 +4125,7 @@
   (symbol (lib_id "power:GND") (at 230.886 161.163 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid cb14e003-48c8-40f7-8753-ed5ca81301c4)
-    (property "Reference" "#PWR?" (id 0) (at 230.886 167.513 0)
+    (property "Reference" "#PWR028" (id 0) (at 230.886 167.513 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 230.886 166.37 0))
@@ -4173,7 +4173,7 @@
   (symbol (lib_id "Transistor_FET:2N7002") (at 186.309 159.258 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid d042580a-586d-496d-8789-be43a2c12728)
-    (property "Reference" "Q?" (id 0) (at 192.405 157.9879 0)
+    (property "Reference" "Q4" (id 0) (at 192.405 157.9879 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2N7002" (id 1) (at 192.405 160.5279 0)
@@ -4256,7 +4256,7 @@
   (symbol (lib_id "power:+3V3") (at 187.96 34.544 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid e47602fb-fdd3-4990-a7d2-3c41a1dbc8e3)
-    (property "Reference" "#PWR020" (id 0) (at 187.96 38.354 0)
+    (property "Reference" "#PWR021" (id 0) (at 187.96 38.354 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (id 1) (at 187.96 29.21 0))
@@ -4387,7 +4387,7 @@
   (symbol (lib_id "power:GND") (at 304.673 110.998 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid fb8414e1-fef9-419c-b468-1f298eea7984)
-    (property "Reference" "#PWR028" (id 0) (at 304.673 117.348 0)
+    (property "Reference" "#PWR037" (id 0) (at 304.673 117.348 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 304.673 116.586 0))
@@ -4403,7 +4403,7 @@
   (symbol (lib_id "power:+5V") (at 304.165 152.019 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid fc94f245-2b8d-436c-b091-f7150042f6eb)
-    (property "Reference" "#PWR0101" (id 0) (at 304.165 155.829 0)
+    (property "Reference" "#PWR032" (id 0) (at 304.165 155.829 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (id 1) (at 304.165 147.32 0))
@@ -4478,62 +4478,62 @@
     (path "/4226878f-a188-44c5-911c-453804e5cfea"
       (reference "#PWR019") (unit 1) (value "+5V") (footprint "")
     )
-    (path "/e47602fb-fdd3-4990-a7d2-3c41a1dbc8e3"
-      (reference "#PWR020") (unit 1) (value "+3V3") (footprint "")
+    (path "/71a9b206-c252-4951-97af-769bab6c498d"
+      (reference "#PWR020") (unit 1) (value "GND") (footprint "")
     )
-    (path "/8a096ae9-bcb1-4252-8b6a-102e303a1e78"
+    (path "/e47602fb-fdd3-4990-a7d2-3c41a1dbc8e3"
       (reference "#PWR021") (unit 1) (value "+3V3") (footprint "")
     )
-    (path "/8b273aee-11a3-44dd-baf6-f1c94e837499"
+    (path "/98dd8a1f-b3f9-4850-99e2-cc0450722fe0"
       (reference "#PWR022") (unit 1) (value "GND") (footprint "")
     )
-    (path "/2b15dcfc-1520-4124-aba9-0f440be5bf33"
-      (reference "#PWR024") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/269482af-35bf-499e-9fd9-bf40e6095487"
-      (reference "#PWR025") (unit 1) (value "+12V") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-000060140b12"
-      (reference "#PWR026") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/3f7cdddd-93d2-4489-a617-17990f30cb43"
-      (reference "#PWR027") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/fb8414e1-fef9-419c-b468-1f298eea7984"
-      (reference "#PWR028") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/bdda9754-a87c-423b-9d5d-df70280e65bb"
-      (reference "#PWR029") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/fc94f245-2b8d-436c-b091-f7150042f6eb"
-      (reference "#PWR0101") (unit 1) (value "+5V") (footprint "")
-    )
-    (path "/56743bd0-c8a0-4a17-ade1-025432c6460e"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/5e3856f0-4f55-4eb2-9a3b-820f2ed2f81a"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/6a773d6f-a6af-4b0a-a939-9c80148855e4"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/71a9b206-c252-4951-97af-769bab6c498d"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
     (path "/783656f2-e30c-426e-ac23-3a411bdc2c67"
-      (reference "#PWR?") (unit 1) (value "+12V") (footprint "")
-    )
-    (path "/89d3a676-46ee-4d78-a23c-6e0d17b95133"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/98dd8a1f-b3f9-4850-99e2-cc0450722fe0"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+      (reference "#PWR023") (unit 1) (value "+12V") (footprint "")
     )
     (path "/b9476917-ebb9-4d73-81b7-af9ea06d192c"
-      (reference "#PWR?") (unit 1) (value "+12V") (footprint "")
+      (reference "#PWR024") (unit 1) (value "+12V") (footprint "")
+    )
+    (path "/6a773d6f-a6af-4b0a-a939-9c80148855e4"
+      (reference "#PWR025") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/89d3a676-46ee-4d78-a23c-6e0d17b95133"
+      (reference "#PWR026") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/56743bd0-c8a0-4a17-ade1-025432c6460e"
+      (reference "#PWR027") (unit 1) (value "GND") (footprint "")
     )
     (path "/cb14e003-48c8-40f7-8753-ed5ca81301c4"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+      (reference "#PWR028") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/8a096ae9-bcb1-4252-8b6a-102e303a1e78"
+      (reference "#PWR029") (unit 1) (value "+3V3") (footprint "")
+    )
+    (path "/8b273aee-11a3-44dd-baf6-f1c94e837499"
+      (reference "#PWR030") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/5e3856f0-4f55-4eb2-9a3b-820f2ed2f81a"
+      (reference "#PWR031") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/fc94f245-2b8d-436c-b091-f7150042f6eb"
+      (reference "#PWR032") (unit 1) (value "+5V") (footprint "")
+    )
+    (path "/2b15dcfc-1520-4124-aba9-0f440be5bf33"
+      (reference "#PWR033") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/269482af-35bf-499e-9fd9-bf40e6095487"
+      (reference "#PWR034") (unit 1) (value "+12V") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000060140b12"
+      (reference "#PWR035") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/3f7cdddd-93d2-4489-a617-17990f30cb43"
+      (reference "#PWR036") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/fb8414e1-fef9-419c-b468-1f298eea7984"
+      (reference "#PWR037") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/bdda9754-a87c-423b-9d5d-df70280e65bb"
+      (reference "#PWR038") (unit 1) (value "GND") (footprint "")
     )
     (path "/c0e53e62-f89d-41ff-91b0-9eb5efa0a511"
       (reference "C1") (unit 1) (value "220pF") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
@@ -4545,31 +4545,31 @@
       (reference "C3") (unit 1) (value "2.2uF 6.3V") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
     )
     (path "/3eab5b3c-7ed0-4182-9531-a8f7c8760e9b"
-      (reference "D?") (unit 1) (value "BAT54SW") (footprint "Package_TO_SOT_SMD:SOT-323_SC-70")
+      (reference "D1") (unit 1) (value "BAT54SW") (footprint "Package_TO_SOT_SMD:SOT-323_SC-70")
     )
     (path "/a84ec113-c3dd-405e-bd0e-c1330837f189"
-      (reference "D?") (unit 1) (value "BAT54SW") (footprint "Package_TO_SOT_SMD:SOT-323_SC-70")
+      (reference "D2") (unit 1) (value "BAT54SW") (footprint "Package_TO_SOT_SMD:SOT-323_SC-70")
     )
     (path "/5a1caa75-5f82-4077-8302-867debe8edf0"
       (reference "J1") (unit 1) (value "QWIIC Connector") (footprint "SparkFun-Connectors:1X04_1MM_RA")
     )
-    (path "/46c050f4-f888-4468-b7de-eb0185fb311a"
-      (reference "J2") (unit 1) (value "DIN-5_180degree") (footprint "SparkFun-Connectors:DIN5-RA-PTH")
+    (path "/95ef4bb8-f5c1-4c5e-817b-ad10fe2c586a"
+      (reference "J2") (unit 1) (value "Screw_Terminal_01x04") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-4_1x04_P2.54mm_Horizontal")
     )
-    (path "/4db2c40f-63b9-42de-89fe-635905f124f1"
+    (path "/46c050f4-f888-4468-b7de-eb0185fb311a"
       (reference "J3") (unit 1) (value "DIN-5_180degree") (footprint "SparkFun-Connectors:DIN5-RA-PTH")
     )
+    (path "/4db2c40f-63b9-42de-89fe-635905f124f1"
+      (reference "J4") (unit 1) (value "DIN-5_180degree") (footprint "SparkFun-Connectors:DIN5-RA-PTH")
+    )
     (path "/39f5561e-62b7-4f75-be14-d9fdc2eea50f"
-      (reference "J4") (unit 1) (value "Screw_Terminal_01x02") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal")
+      (reference "J5") (unit 1) (value "Screw_Terminal_01x02") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal")
     )
     (path "/8745d3d9-a9a9-4016-b510-a933f7f22c76"
-      (reference "J5") (unit 1) (value "Screw_Terminal_01x03") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-3_1x03_P2.54mm_Horizontal")
-    )
-    (path "/00000000-0000-0000-0000-00006013734e"
       (reference "J6") (unit 1) (value "Screw_Terminal_01x03") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-3_1x03_P2.54mm_Horizontal")
     )
-    (path "/95ef4bb8-f5c1-4c5e-817b-ad10fe2c586a"
-      (reference "J?") (unit 1) (value "Screw_Terminal_01x04") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-4_1x04_P2.54mm_Horizontal")
+    (path "/00000000-0000-0000-0000-00006013734e"
+      (reference "J7") (unit 1) (value "Screw_Terminal_01x03") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-3_1x03_P2.54mm_Horizontal")
     )
     (path "/795389c3-af13-4fd1-9c9c-4dc74b83a7bf"
       (reference "Q1") (unit 1) (value "2N7002") (footprint "Package_TO_SOT_SMD:SOT-23")
@@ -4578,16 +4578,16 @@
       (reference "Q2") (unit 1) (value "2N7002") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/1fd89a86-8eb3-432e-9f41-05cdfde7e9ca"
-      (reference "Q?") (unit 1) (value "2N7002") (footprint "Package_TO_SOT_SMD:SOT-23")
-    )
-    (path "/71dcefcb-d9be-4514-ae16-46458d62c1fc"
-      (reference "Q?") (unit 1) (value "SUD50P04-08") (footprint "Package_TO_SOT_SMD:TO-252-2")
-    )
-    (path "/910f9893-f053-4e34-8de3-0c51ed6005eb"
-      (reference "Q?") (unit 1) (value "SUD50P04-08") (footprint "Package_TO_SOT_SMD:TO-252-2")
+      (reference "Q3") (unit 1) (value "2N7002") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/d042580a-586d-496d-8789-be43a2c12728"
-      (reference "Q?") (unit 1) (value "2N7002") (footprint "Package_TO_SOT_SMD:SOT-23")
+      (reference "Q4") (unit 1) (value "2N7002") (footprint "Package_TO_SOT_SMD:SOT-23")
+    )
+    (path "/71dcefcb-d9be-4514-ae16-46458d62c1fc"
+      (reference "Q5") (unit 1) (value "SUD50P04-08") (footprint "Package_TO_SOT_SMD:TO-252-2")
+    )
+    (path "/910f9893-f053-4e34-8de3-0c51ed6005eb"
+      (reference "Q6") (unit 1) (value "SUD50P04-08") (footprint "Package_TO_SOT_SMD:TO-252-2")
     )
     (path "/c8ac6dc8-269f-4dbe-83bd-b6e9d0de1c1e"
       (reference "R1") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
@@ -4622,29 +4622,29 @@
     (path "/58214b8f-d797-47ef-9cf1-311f15956493"
       (reference "R11") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
-    (path "/4035dfa5-4d5b-415b-a92b-8dedd26cc7ae"
-      (reference "R12") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/77e0f4b4-3446-47f4-8ab9-879967f95692"
-      (reference "R13") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/3656b1d6-3ef3-4dce-a95f-d7c45c1b0566"
-      (reference "R?") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
-    )
-    (path "/643429c6-4f09-450a-b177-0ad1094c5670"
-      (reference "R?") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
-    )
     (path "/66b95480-4179-47cf-a62d-c46817c3c966"
-      (reference "R?") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
-    )
-    (path "/8ad48fa0-7ec2-4558-becd-c97ffdbb37c6"
-      (reference "R?") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
-    )
-    (path "/ae6548f8-302d-49a0-a714-954ace2859b2"
-      (reference "R?") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
+      (reference "R12") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
     )
     (path "/c96972cd-e6da-4b6e-a99b-e832c513e5d0"
-      (reference "R?") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
+      (reference "R13") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
+    )
+    (path "/8ad48fa0-7ec2-4558-becd-c97ffdbb37c6"
+      (reference "R14") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
+    )
+    (path "/4035dfa5-4d5b-415b-a92b-8dedd26cc7ae"
+      (reference "R15") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric")
+    )
+    (path "/3656b1d6-3ef3-4dce-a95f-d7c45c1b0566"
+      (reference "R16") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
+    )
+    (path "/77e0f4b4-3446-47f4-8ab9-879967f95692"
+      (reference "R17") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0805_2012Metric")
+    )
+    (path "/643429c6-4f09-450a-b177-0ad1094c5670"
+      (reference "R18") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
+    )
+    (path "/ae6548f8-302d-49a0-a714-954ace2859b2"
+      (reference "R19") (unit 1) (value "10R") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
     )
     (path "/dcc76f9f-cf69-42ec-94ad-cf094021b5bc"
       (reference "U1") (unit 1) (value "Arduino_Nano_v3.x") (footprint "Module:Arduino_Nano")
