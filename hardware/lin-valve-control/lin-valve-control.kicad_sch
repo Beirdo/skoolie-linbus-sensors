@@ -2,7 +2,7 @@
 
   (uuid 8cf96ded-eaff-4b6f-bfd2-e22f670ba195)
 
-  (paper "USLegal")
+  (paper "A4")
 
   (title_block
     (title "LINBus Valve Controller")
