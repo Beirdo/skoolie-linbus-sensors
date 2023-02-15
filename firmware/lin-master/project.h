@@ -20,6 +20,7 @@
 #define HI_NIBBLE(x)  ((uint8_t)(((int)(x) >> 4) & 0x0F))
 #define LO_NIBBLE(x)  ((uint8_t)(((int)(x) & 0x0F)))
 
+#define BIT(x)        ((uint32_t)(1 << x))
 
 template <typename T>
 inline T clamp(T value, T minval, T maxval)

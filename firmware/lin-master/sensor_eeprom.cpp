@@ -22,9 +22,9 @@ uint8_t eeprom_checksum(void *data, int len)
 void init_eeprom(void) 
 {
   uint8_t addr = 0x70;
-  addr |= digitalRead(PIN_I2C_A2) ? 1 << 2 : 0;        
-  addr |= digitalRead(PIN_I2C_A1) ? 1 << 1 : 0;        
-  addr |= digitalRead(PIN_I2C_A0) ? 1 << 0 : 0;
+  addr |= digitalRead(PIN_I2C_A2) ? BIT(2) : 0;        
+  addr |= digitalRead(PIN_I2C_A1) ? BIT(1) : 0;        
+  addr |= digitalRead(PIN_I2C_A0) ? BIT(0) : 0;
 
   eeprom_i2c_addr = addr;
   bridge_i2c_addr = addr | 0x08;

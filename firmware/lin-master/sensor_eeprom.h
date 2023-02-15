@@ -35,7 +35,8 @@ static_assert(sizeof(eeprom_data_t) <= INTERNAL_EEPROM_SIZE, "Structure eeprom_d
 #define CAPABILITIES_COOLANT_TEMP     0x04
 #define CAPABILITIES_EXHAUST_TEMP     0x08
 #define CAPABILITIES_IGNITION_SOURCE  0x10
-#define CAPABILITIES_LINBUS_BRIDGE    0x20
+#define CAPABILITIES_EMERGENCY_STOP   0x20
+#define CAPABILITIES_LINBUS_BRIDGE    0x40
 
 extern eeprom_data_t eeprom_data;
 extern uint8_t eeprom_i2c_addr;

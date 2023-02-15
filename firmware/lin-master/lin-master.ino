@@ -156,7 +156,7 @@ void i2c_bridge_request_event(void)
   
   // reads - we always will return two bytes, which we request over the LINBus.  The I2C side has id, register
   // if we know the device isn't there, let I2C timeout.
-  if (!(eeprom_data.current.linbus_slaves & (1 << current_linbus_id))) {
+  if (!(eeprom_data.current.linbus_slaves & BIT(current_linbus_id))) {
     return;
   }
   
@@ -180,7 +180,7 @@ void i2c_bridge_receive_event(uint8_t *buf, int count)
   // writes - we always will send the register number (and 1 byte if count > 2), 
   // which we send over the LINBus.
   
-  if (!(eeprom_data.current.linbus_slaves & (1 << current_linbus_id))) {
+  if (!(eeprom_data.current.linbus_slaves & BIT(current_linbus_id))) {
     return;
   }
   
