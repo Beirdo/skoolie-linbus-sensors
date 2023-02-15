@@ -21,6 +21,8 @@
 #define PIN_LIN_WAKE      15
 #define PIN_MOTOR_FAULT   16
 #define PIN_PUMP_EN       17
+#define PIN_SDA           18
+#define PIN_SCL           19
 #define PIN_COOLANT_NTC   A7
 
 #define VALVE2_CLOSED     0x80
