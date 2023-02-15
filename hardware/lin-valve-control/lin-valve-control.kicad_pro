@@ -426,6 +426,14 @@
     [
       "8cf96ded-eaff-4b6f-bfd2-e22f670ba195",
       ""
+    ],
+    [
+      "c55b2092-0699-4982-9b6d-21d33a69ba9f",
+      "Connectors"
+    ],
+    [
+      "939b7746-0558-4cc6-8772-98c627cf48cc",
+      "IO"
     ]
   ],
   "text_variables": {}
