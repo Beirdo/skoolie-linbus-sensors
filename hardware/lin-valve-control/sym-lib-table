@@ -2,4 +2,6 @@
   (lib (name "UltraLibrarian")(type "KiCad")(uri "${KICAD6_GIT_LIBRARIES}/Beirdo-KiCad-Libraries/Symbols/UltraLibrarian.kicad_sym")(options "")(descr ""))
   (lib (name "SparkFun-Connectors")(type "KiCad")(uri "${KICAD6_GIT_LIBRARIES}/SparkFun-KiCad-Libraries/Libraries/SparkFun-Connectors.kicad_sym")(options "")(descr ""))
   (lib (name "Beirdo")(type "KiCad")(uri "${KICAD6_GIT_LIBRARIES}/Beirdo-KiCad-Libraries/Symbols/Beirdo.kicad_sym")(options "")(descr ""))
+  (lib (name "SparkFun-Displays")(type "KiCad")(uri "${KICAD6_GIT_LIBRARIES}/SparkFun-KiCad-Libraries/Libraries/SparkFun-Displays.kicad_sym")(options "")(descr ""))
+  (lib (name "SparkFun-Boards")(type "KiCad")(uri "${KICAD6_GIT_LIBRARIES}/SparkFun-KiCad-Libraries/Libraries/SparkFun-Boards.kicad_sym")(options "")(descr ""))
 )
