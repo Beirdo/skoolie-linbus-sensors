@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 1.016,
+          "height": 1.8796,
+          "width": 1.8796
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -416,7 +416,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "./",
+    "plot_directory": "",
     "spice_adjust_passive_values": false,
     "spice_external_command": "spice \"%I\"",
     "subpart_first_id": 65,
@@ -428,12 +428,12 @@
       ""
     ],
     [
-      "c55b2092-0699-4982-9b6d-21d33a69ba9f",
-      "Connectors"
+      "d89eb81e-d734-4f3f-b852-ef5b4e86b871",
+      "Power"
     ],
     [
       "939b7746-0558-4cc6-8772-98c627cf48cc",
-      "IO"
+      "Valve"
     ]
   ],
   "text_variables": {}
