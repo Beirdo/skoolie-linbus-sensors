@@ -3,37 +3,32 @@
 
 #include <Arduino.h>
 
+
+typedef enum {
+  REG_BOARD_TYPE = 0,
+  REG_VALVE_CONTROL,
+  REG_VALVE_STATUS,
+  REG_VALVE_CURRENT_HI,
+  REG_VALVE_CURRENT_LO,
+  MAX_REGISTERS,
+} register_valve_controller_t;
+
+typedef enum {
+  BOARD_TYPE_VALVE_CONTROL = 0,
+} board_types_t;
+
+
 class LINBusRegister {
   public:
-    LINBusRegister(const char *name, uint8_t write_mask, uint8_t default_value = 0x00) :
-      _name(name), _write_mask(write_mask), _default_value(default_value), _value(default_value) {}
+    LINBusRegister(uint8_t write_mask, uint8_t default_value = 0x00) :
+      _write_mask(write_mask), _default_value(default_value), _value(default_value) {}
     void write(uint8_t value, bool raw = false);
     uint8_t read(void);
     void changeBit(uint8_t bitNum, bool newValue, bool raw = false);
   private:
-    const char *_name;
     uint8_t _write_mask;
     uint8_t _default_value;
     uint8_t _value;
 };
-
-struct LINBusRegisterItem_s; 
-typedef struct LINBusRegisterItem_s {
-  uint8_t index;
-  LINBusRegister *reg;
-  struct LINBusRegisterItem_s *prev;
-  struct LINBusRegisterItem_s *next;
-} LINBusRegisterItem_t;
-
-class LINBusRegisterFile {
-  public:
-    LINBusRegisterFile();
-    void addRegister(uint8_t index, LINBusRegister *register_);
-    LINBusRegister *getRegister(uint8_t index);
-  private:
-    LINBusRegisterItem_t *_head;
-};
-
-extern LINBusRegisterFile linbusRegisterFile;
 
 #endif
