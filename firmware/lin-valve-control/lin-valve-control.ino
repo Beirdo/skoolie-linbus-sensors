@@ -1,117 +1,93 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <LINBus_stack.h>
-#include <EEPROM.h>
+#include <SparkFun_PCA9536_Arduino_Library.h>
+#include <SparkFun_TCA9534.h>
+#include <Adafruit_LiquidCrystal.h>
 
 #include "project.h"
-#include "ntc_thermistor.h"
+#include "linbus_interface.h"
 
-uint8_t registerIndex = 0xFF;
-uint8_t registerBank[MAX_REGISTERS] = {0};
-int flowPulseCount = 0;
-int flowPulseLastClear = 0; 
+PCA9536 pca9536;
+TCA9534 tca9534;
 
-uint8_t linbus_address;
-uint8_t linbus_buf[2];
-uint8_t linbus_buf_len = 2;
+void reset_isr(void);
+void i2c_int_isr(void);
 
-void setOpenDrainOutput(uint8_t pin, bool value, bool invert = false);
-int getFlowPulsePerSec(void);
-void flow_pulse_isr(void);
-
-LINBus_stack *linbus;
-NTCThermistor thermistor(25, 50, 10000, 3545, coolant_ntc_resistance_table, coolant_ntc_resistance_count, coolant_ntc_offset);
-
-
-void flow_pulse_isr(void)
+void reset_isr(void)
 {
-  flowPulseCount++;
+  void (* reboot)(void) = 0;
+  reboot();
 }
 
-void setOpenDrainOutput(uint8_t pin, bool value, bool invert)
+void i2c_int_isr(void)
 {
-  if (invert) {
-    value = !value;
-  }
-
-  if (!value) {
-    pinMode(pin, OUTPUT);
-    digitalWrite(pin, LOW);
-  } else {
-    pinMode(pin, INPUT_PULLUP);
-    digitalWrite(pin, HIGH);
-  }
+  // Do squat for now.  This SHOULD trigger a read of all the inputs.
 }
 
-int getFlowPulsePerSecond(void)
+void setPhasePWM(bool cw, bool ccw)
 {
-  int result = 0;
-  int delta;
+  uint8_t duty_cycle;
 
-  noInterrupts();
-  int now = millis();
-  delta = now - flowPulseLastClear;
-  if (delta > 0 && delta <= 1000) {
-    result = flowPulseCount * 1000 / delta;
-  }
+  int8_t direction = ((cw ^ ccw) ? (cw ? 1 : -1) : 0);
+  duty_cycle = 50 + (direction * 50);
 
-  flowPulseCount = 0;
-  flowPulseLastClear = now;
-  interrupts();
-
-  return result;
+  analogWrite(PIN_PHASE_PWM, map<uint8_t>(duty_cycle, 0, 100, 0, 255)); 
 }
 
 void setup() 
 {
-  pinMode(PIN_ONBOARD_LED, OUTPUT);
-  digitalWrite(PIN_ONBOARD_LED, HIGH);
+  // Analog Input, actually
+  analogReference(INTERNAL2V5);
+  analogReadResolution(12);
+  pinMode(PIN_VPROPI, INPUT);
 
-  linbus_address = EEPROM.read(0);
-  if (linbus_address == 0xFF) {
-    linbus_address = 0x1F;
-    EEPROM.update(0, linbus_address);
+  pinMode(PIN_I2C_INT, INPUT);
+  attachInterrupt(digitalPinToInterrupt(PIN_I2C_INT), i2c_int_isr, FALLING);
+
+  pinMode(PIN_RESET, INPUT);
+  attachInterrupt(digitalPinToInterrupt(PIN_RESET), reset_isr, FALLING);
+
+  pinMode(PIN_PHASE_PWM, OUTPUT);
+  setPhasePWM(false, false);
+
+  // Get the LINBus ID (0x00-0x0F) from PCA9536 - we could do 0x00-0x1F if needed
+  pca9536.begin();
+
+  linbus_address = 0x00;
+  if (pca9536.isConnected()) { 
+    for (int i = 0; i < 4; i++) {
+      pca9536.pinMode(i, INPUT);    
+      linbus_address |= pca9536.digitalRead(i) ? BIT(i) : 0;
+    }
   }
-  linbus = new LINBus_stack(Serial, 19200, PIN_LIN_WAKE, PIN_LIN_SLP, linbus_address);
 
-  setOpenDrainOutput(PIN_LIN_SLP, false, true);
-  setOpenDrainOutput(PIN_LIN_WAKE, false, true);
+  // Setup inputs and outputs on the TCA9534
+  tca9534.begin(Wire, I2C_ADDR_TCA9534);
 
-  digitalWrite(PIN_VALVE1_INP, LOW);
-  pinMode(PIN_VALVE1_INP, OUTPUT);
+  tca9534.pinMode(PIN_LED, OUTPUT);
+  tca9534.digitalWrite(PIN_LED, HIGH);
 
-  digitalWrite(PIN_VALVE1_INN, LOW);
-  pinMode(PIN_VALVE1_INN, OUTPUT);
+  tca9534.pinMode(PIN_ENABLE, OUTPUT);
+  tca9534.digitalWrite(PIN_ENABLE, LOW);  
 
-  pinMode(PIN_VALVE1_CLOSED, INPUT);
-  pinMode(PIN_VALVE1_OPENED, INPUT);
+  tca9534.pinMode(PIN_SLEEP, OUTPUT);
+  tca9534.invertPin(PIN_SLEEP, INVERT);
+  tca9534.digitalWrite(PIN_SLEEP, HIGH);    // Actually (active) low.
 
-  pinMode(PIN_FLOW_PULSE, INPUT);
-  pinMode(PIN_FAN_PWM, OUTPUT);
-  analogWrite(PIN_FAN_PWM, 0);
+  tca9534.pinMode(PIN_VALVE_CLOSED, INPUT);
+  tca9534.pinMode(PIN_VALVE_OPENED, INPUT);
 
-  digitalWrite(PIN_VALVE2_INP, LOW);
-  pinMode(PIN_VALVE2_INP, OUTPUT);
+  tca9534.pinMode(PIN_FAULT, INPUT);
+  tca9534.invertPin(PIN_FAULT, INVERT);
 
-  digitalWrite(PIN_VALVE2_INN, LOW);
-  pinMode(PIN_VALVE2_INN, OUTPUT);
+  tca9534.pinMode(PIN_LIN_SLP, OUTPUT);
+  tca9534.digitalWrite(PIN_LIN_SLP, LOW);
+    
+  tca9534.pinMode(PIN_LIN_WAKE, OUTPUT);
+  tca9534.digitalWrite(PIN_LIN_WAKE, LOW);
 
-  pinMode(PIN_VALVE2_CLOSED, INPUT);
-  pinMode(PIN_VALVE2_OPENED, INPUT);
-
-  pinMode(PIN_MOTOR_FAULT, INPUT_PULLUP);
-
-  digitalWrite(PIN_MOTOR_EN, LOW);
-  pinMode(PIN_MOTOR_EN, OUTPUT);
-
-  digitalWrite(PIN_PUMP_EN, LOW);
-  pinMode(PIN_PUMP_EN, OUTPUT);
-
-  pinMode(PIN_COOLANT_NTC, INPUT);
-
-  attachInterrupt(digitalPinToInterrupt(PIN_FLOW_PULSE), flow_pulse_isr, RISING);
-
-  getFlowPulsePerSecond();
+  init_linbus(linbus_address);
 }
 
 void loop() 
@@ -120,94 +96,10 @@ void loop()
   int topOfLoop = millis();
 
   bool ledOn = ((ledCounter++ & 0x07) == 0x01);
-  digitalWrite(PIN_ONBOARD_LED, ledOn);
+  tca9534.digitalWrite(PIN_LED, ledOn);
 
-  // Let's do this.  Filter the control of the valves
-  uint8_t mask = VALVE2_CLOSED | VALVE2_OPENED | VALVE1_CLOSED | VALVE1_OPENED;
-  uint8_t control = registerBank[REG_VALVE_CONTROL] & (mask >> 2);
-  uint8_t status  = (registerBank[REG_VALVE_STATUS] & mask) >> 2;
-
-  // Clear the request if it's already done
-  control ^= status;
-
-  // If both open and close are requested, just stop
-  if ((control & 0x30) == 0x30) {
-    control &= 0x0F;
-  }
-
-  if ((control & 0x03) == 0x03) {
-    control &= 0xF0;
-  }
-
-  digitalWrite(PIN_MOTOR_EN, control);
-
-  digitalWrite(PIN_VALVE2_INP, control & VALVE2_OPEN);
-  digitalWrite(PIN_VALVE2_INN, control & VALVE2_CLOSE);
-
-  digitalWrite(PIN_VALVE1_INP, control & VALVE1_OPEN);
-  digitalWrite(PIN_VALVE1_INN, control & VALVE1_CLOSE);
-
-  status = control;
-  status |= digitalRead(PIN_VALVE2_CLOSED) ? VALVE2_CLOSED : 0;
-  status |= digitalRead(PIN_VALVE2_OPENED) ? VALVE2_OPENED : 0;
-  status |= digitalRead(PIN_VALVE1_CLOSED) ? VALVE1_CLOSED : 0;
-  status |= digitalRead(PIN_VALVE1_OPENED) ? VALVE1_OPENED : 0;
-
-  registerBank[REG_VALVE_STATUS] = status;
-
-  int value = analogRead(PIN_COOLANT_NTC);
-  int resistance = value * 10000 / (4096 - value);
-  int temperature = thermistor.lookup(resistance);
-
-  registerBank[REG_TEMP_HI] = HI_BYTE(temperature);
-  registerBank[REG_TEMP_LO] = LO_BYTE(temperature);
-
-  value = getFlowPulsePerSecond();
-  // F = 5.5 * Q where Q = L/min, max of 60L/min
-  value = map<int>(value, 0, 330, 0, 60000);
-
-  registerBank[REG_FLOW_HI] = HI_BYTE(value);
-  registerBank[REG_FLOW_LO] = LO_BYTE(value);
-
-  control = registerBank[REG_COOLING_CONTROL]
-  int fan_target = clamp<int>(control & 0x7F, 0, 100);
-  pump_on = control & 0x80;
-
-  if (!fan_target) {
-    fan_percent = 0;
-  } else {
-    int fan_delta = clamp<int>(fan_target - fan_percent, -10, 10);
-    fan_percent = clamp<int>(fan_percent + fan_delta, 0, 100);
-  }
-
-  analogWrite(PIN_FAN_PWM, map<int>(fan_percent, 0, 100, 0, 255));
-  digitalWrite(PIN_PUMP_EN, pump_on);
-
-  status = (pump_on ? 0x80 : 0x00) | fan_percent;
-  registerBank[REG_COOLING_STATUS] = status;
-
-  int read;
-  // *** TODO ***  wait for a break!?
-  if (linbus->read(linbus_buf, linbus_buf_len, &read)) {
-    if (read) { 
-      // this was a packet written to us
-      if (linbus_buf[0] == REG_VALVE_CONTROL) {
-        registerBank[REG_VALVE_CONTROL] = linbus_buf[1];
-      } else if (linbus_buf[0] == REG_COOLING_CONTROL) {
-        registerBank[REG_COOLING_CONTROL] = linbus_buf[1];
-      } else if ((linbus_buf[0] & 0x80) == 0x80) {
-        registerIndex = linbus_buf[0] & 0x7F;
-      }
-    } else {
-      registerIndex = clamp<int>(registerIndex, 0, MAX_REGISTERS - 1);
-      linbus_buf[0] = registerBank[registerIndex++];
-      registerIndex = clamp<int>(registerIndex, 0, MAX_REGISTERS - 1);
-      linbus_buf[1] = registerBank[registerIndex++];
-      linbus->writeResponse(linbus_buf, 2);
-    } 
-  } else {
-    linbus->sleep(STATE_SLEEP);
-  }
+  update_linbus();
+  process_linbus();
 
   int elapsed = millis() - topOfLoop;
   int delayMs = clamp<int>(100 - elapsed, 1, 100);
