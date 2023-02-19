@@ -16,6 +16,8 @@ typedef enum {
 typedef enum {
   BOARD_TYPE_VALVE_CONTROL = 0,
   BOARD_TYPE_COOLANT_TEMP,
+  BOARD_TYPE_FLOW_SENSOR,
+  BOARD_TYPE_FAN_CONTROL,
 } board_types_t;
 
 
