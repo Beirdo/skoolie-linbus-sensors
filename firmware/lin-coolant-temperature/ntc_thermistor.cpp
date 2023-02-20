@@ -4,7 +4,7 @@
 #include "project.h"
 
 
-const int coolant_ntc_resistance_table[] = {
+const long int coolant_ntc_resistance_table[] = {
   669745, 623986, 581649, 542458, 506159, 472520, 441331, 412398, 385544, 360608,   // -50 - -41
   337440, 315905, 295877, 277243, 259897, 243743, 228691, 214660, 201574, 189365,   // -40 - -31
   177969, 167327, 157384, 148091, 139402, 131273, 123666, 116544, 109874, 103624,   // -30 - -21
@@ -32,7 +32,7 @@ const int coolant_ntc_resistance_count = sizeof(coolant_ntc_resistance_table) / 
 NTCThermistor thermistor(25, 50, 10000, 3545, coolant_ntc_resistance_table, coolant_ntc_resistance_count, -50);
 
 
-NTCThermistor::NTCThermistor(int t0, int t1, int r0, int r1, const int *table, int count, int offset)
+NTCThermistor::NTCThermistor(int t0, int t1, int r0, int r1, const long int *table, int count, int offset)
 {
   _table = table;
   _count = count;
