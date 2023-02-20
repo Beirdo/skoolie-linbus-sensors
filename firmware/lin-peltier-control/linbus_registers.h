@@ -6,12 +6,9 @@
 
 typedef enum {
   REG_BOARD_TYPE = 0,
-  REG_VALVE_CONTROL,
-  REG_VALVE_STATUS,
-  REG_VALVE_CURRENT_HI,
-  REG_VALVE_CURRENT_LO,
+  REG_PELTIER_CONTROL,
   MAX_REGISTERS,
-} register_valve_controller_t;
+} register_peltier_controller_t;
 
 typedef enum {
   BOARD_TYPE_VALVE_CONTROL = 0,

@@ -8,7 +8,7 @@ typedef enum {
   REG_BOARD_TYPE = 0,
   REG_PUMP_CONTROL,
   MAX_REGISTERS,
-} register_fan_controller_t;
+} register_pump_controller_t;
 
 typedef enum {
   BOARD_TYPE_VALVE_CONTROL = 0,
@@ -16,6 +16,7 @@ typedef enum {
   BOARD_TYPE_FLOW_SENSOR,
   BOARD_TYPE_FAN_CONTROL,
   BOARD_TYPE_PUMP_CONTROL,
+  BOARD_TYPE_PELTIER_CONTROL,
 } board_types_t;
 
 
