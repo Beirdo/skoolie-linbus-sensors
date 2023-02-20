@@ -11,7 +11,7 @@ typedef enum {
   REG_FLOW_RATE1_HI,
   REG_FLOW_RATE1_LO,
   MAX_REGISTERS,
-} register_valve_controller_t;
+} register_flow_sensor_t;
 
 typedef enum {
   BOARD_TYPE_VALVE_CONTROL = 0,

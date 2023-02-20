@@ -10,3 +10,4 @@ Libraries:
   - SparkFun PCA9536 Arduino Library by SparkFun Electronics 
     <techsupport@sparkfun.com>  - v1.2.2
   - Adafruit LiquidCrystal by Adafruit - v2.0.2
+  - LM96163 by Gavin Hurlbut - v1.0.0

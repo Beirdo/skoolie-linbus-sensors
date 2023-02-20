@@ -11,7 +11,7 @@ typedef enum {
   REG_COOLANT_TEMP1_HI,
   REG_COOLANT_TEMP1_LO,
   MAX_REGISTERS,
-} register_valve_controller_t;
+} register_coolant_temperature_t;
 
 typedef enum {
   BOARD_TYPE_VALVE_CONTROL = 0,
