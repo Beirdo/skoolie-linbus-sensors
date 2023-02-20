@@ -19,8 +19,8 @@ void reset_isr(void)
 
 void setup() 
 {
-  pinMode(PIN_ALERT, INPUT);
-  pinMode(PIN_TCRIT, INPUT);
+  pinMode(PIN_PUMP_EN, OUTPUT);
+  digitalWrite(PIN_PUMP_EN, LOW);
 
   pinMode(PIN_RESET, INPUT);
   attachInterrupt(digitalPinToInterrupt(PIN_RESET), reset_isr, FALLING);

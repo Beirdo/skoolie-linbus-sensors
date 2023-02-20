@@ -73,6 +73,8 @@ void init_linbus(uint8_t address)
 
 void update_linbus(void)
 {
+  lm96163.pollStatus();
+  
   uint16_t rpm = lm96163.getStatus(LM96163_STATUS_TACH);
   registers[REG_FAN_RPM_HI].write(HI_BYTE(rpm), true);
   registers[REG_FAN_RPM_LO].write(LO_BYTE(rpm), true);

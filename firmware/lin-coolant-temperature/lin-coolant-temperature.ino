@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <LINBus_stack.h>
-#include <SparkFun_PCA9536_Arduino_Library.h>
+#include <PCA9536D.h>
 #include <Adafruit_LiquidCrystal.h>
 
 #include "project.h"

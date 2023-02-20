@@ -7,7 +7,6 @@ Choose board:
 
 Libraries:
   - LINBus\_stack by Blaz Pongrac, Gavin Hurlbut - v3.1.0
-  - SparkFun PCA9536 Arduino Library by SparkFun Electronics 
-    <techsupport@sparkfun.com>  - v1.2.2
+  - PCA9536D by SparkFun Electronics, Gavin Hurlbut - v2.0.0
   - Adafruit LiquidCrystal by Adafruit - v2.0.2
   - LM96163 by Gavin Hurlbut - v1.0.0
