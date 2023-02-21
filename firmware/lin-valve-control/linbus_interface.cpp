@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <LINBus_stack.h>
+#include <EEPROM.h>
 
 #include "project.h"
 #include "linbus_interface.h"
@@ -12,6 +13,7 @@ uint8_t linbus_buf_len = 2;
 
 LINBusRegister registers[] = {
   LINBusRegister(0x00, BOARD_TYPE_VALVE_CONTROL),
+  LINBusRegister(0xFF, 0xFF),
   LINBusRegister(0x03, 0x00),
   LINBusRegister(0x00, 0x00),
   LINBusRegister(0x00, 0x00),
@@ -36,6 +38,9 @@ void i2c_digitalWrite(uint8_t pin, uint8_t value)
 
 void init_linbus(uint8_t address)
 {
+  uint8_t location = EEPROM.read(0);
+  registers[REG_LOCATION].write(location);
+
   linbus_address = address & 0x1F;
   linbus.setPinMode(i2c_pinMode);
   linbus.setDigitalWrite(i2c_digitalWrite);
@@ -91,6 +96,10 @@ void process_linbus(void)
       } else if (addr < MAX_REGISTERS) {
         // this was a packet written to us
         registers[addr].write(data);
+
+        if (addr == REG_LOCATION) {
+          EEPROM.update(0, data);
+        }
       }
     } else {
       registerIndex = clamp<int>(registerIndex, 0, MAX_REGISTERS - 1);

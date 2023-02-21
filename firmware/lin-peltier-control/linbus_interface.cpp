@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <LINBus_stack.h>
+#include <EEPROM.h>
 
 #include "project.h"
 #include "linbus_interface.h"
@@ -12,13 +13,17 @@ uint8_t linbus_buf_len = 2;
 
 LINBusRegister registers[] = {
   LINBusRegister(0x00, BOARD_TYPE_PELTIER_CONTROL),
-  LINBusRegister(0x00, 0x01),
+  LINBusRegister(0xFF, 0xFF),
+  LINBusRegister(0x01, 0x00),
 };
 
 LINBus_stack linbus(Serial, 19200);
 
 void init_linbus(uint8_t address)
 {
+  uint8_t location = EEPROM.read(0);
+  registers[REG_LOCATION].write(location);
+
   linbus_address = address & 0x1F;
   linbus.begin(PIN_LIN_WAKE, PIN_LIN_SLP, linbus_address);
 }
@@ -49,6 +54,8 @@ void process_linbus(void)
 
         if (addr == REG_PELTIER_CONTROL) {
           digitalWrite(PIN_PELTIER_EN, data);
+        } else if (addr == REG_LOCATION) {
+          EEPROM.update(0, data);
         }
       }
     } else {

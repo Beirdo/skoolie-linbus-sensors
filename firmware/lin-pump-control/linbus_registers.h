@@ -6,6 +6,7 @@
 
 typedef enum {
   REG_BOARD_TYPE = 0,
+  REG_LOCATION,
   REG_PUMP_CONTROL,
   MAX_REGISTERS,
 } register_pump_controller_t;

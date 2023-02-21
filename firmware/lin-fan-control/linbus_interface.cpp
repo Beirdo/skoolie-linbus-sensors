@@ -2,6 +2,7 @@
 #include <LINBus_stack.h>
 #include <LM96163.h>
 #include <Wire.h>
+#include <EEPROM.h>
 
 #include "project.h"
 #include "linbus_interface.h"
@@ -14,13 +15,14 @@ uint8_t linbus_buf_len = 2;
 
 LINBusRegister registers[] = {
   LINBusRegister(0x00, BOARD_TYPE_FAN_CONTROL),
-  LINBusRegister(0x00, 0xFF),
+  LINBusRegister(0xFF, 0xFF),
+  LINBusRegister(0xFF, 0x00),
   LINBusRegister(0x00, 0x00),
   LINBusRegister(0x00, 0x00),
   LINBusRegister(0x00, 0x00),
   LINBusRegister(0x00, 0x00),
   LINBusRegister(0x00, 0x00),
-  LINBusRegister(0x00, 0x5B),
+  LINBusRegister(0x5B, 0x00),
   LINBusRegister(0x00, 0x00),
 };
 
@@ -65,6 +67,9 @@ uint8_t cool_hysteresis = 2;
 
 void init_linbus(uint8_t address)
 {
+  uint8_t location = EEPROM.read(0);
+  registers[REG_LOCATION].write(location);
+
   linbus_address = address & 0x1F;
   linbus.begin(PIN_LIN_WAKE, PIN_LIN_SLP, linbus_address);
 
@@ -129,6 +134,8 @@ void process_linbus(void)
           }
         } else if (addr == REG_ALERT_MASK) {
           lm96163.setAlertMask(data);
+        } else if (addr == REG_LOCATION) {
+          EEPROM.update(0, data);
         }
       }
     } else {

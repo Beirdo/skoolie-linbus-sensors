@@ -6,6 +6,7 @@
 
 typedef enum {
   REG_BOARD_TYPE = 0,
+  REG_LOCATION,
   REG_FLOW_RATE0_HI,
   REG_FLOW_RATE0_LO,
   REG_FLOW_RATE1_HI,

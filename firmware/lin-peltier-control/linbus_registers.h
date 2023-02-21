@@ -6,6 +6,7 @@
 
 typedef enum {
   REG_BOARD_TYPE = 0,
+  REG_LOCATION,
   REG_PELTIER_CONTROL,
   MAX_REGISTERS,
 } register_peltier_controller_t;

@@ -21,6 +21,8 @@ uint8_t lastAddress = 0xFF;
 uint16_t eepromAddress;
 uint8_t current_linbus_id;
 uint8_t current_linbus_regnum;
+uint8_t board_types[32];
+uint8_t locations[32];
 
 void setOpenDrainOutput(uint8_t pin, bool value, bool invert)
 {
@@ -69,10 +71,14 @@ uint32_t linbus_probe(void)
 
   linbus.busWakeUp();
   for (int i = 0; i < 32; i++) {
+    buf[0] = 0;
+    linbus.write(base_addr + i, buf, 1);
     linbus.writeRequest(base_addr + i);
     len = linbus.readStream(buf, 3);
     if (len == 3 && linbus.validateChecksum(buf, 3)) {
       bitSet(slaves, i);      
+      board_types[i] = buf[0];
+      locations[i] = buf[1];
     }
   }
 
