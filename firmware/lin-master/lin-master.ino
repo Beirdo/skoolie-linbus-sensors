@@ -15,7 +15,7 @@ void i2c_eeprom_receive_event(uint8_t *buf, int count);
 void i2c_bridge_request_event(void);
 void i2c_bridge_receive_event(uint8_t *buf, int count);
 
-LINBus_stack *linbus;
+LINBus_stack linbus(Serial, 19200);
 MultiWire wire = MultiWire();
 uint8_t lastAddress = 0xFF;
 uint16_t eepromAddress;
@@ -43,7 +43,7 @@ void setup()
   pinMode(PIN_ONBOARD_LED, OUTPUT);
   digitalWrite(PIN_ONBOARD_LED, HIGH);
 
-  linbus = new LINBus_stack(Serial, 19200, PIN_LIN_WAKE, PIN_LIN_SLP);
+  linbus.begin(PIN_LIN_WAKE, PIN_LIN_SLP);
 
   setOpenDrainOutput(PIN_LIN_SLP, false, true);
   setOpenDrainOutput(PIN_LIN_WAKE, false, true);
@@ -67,11 +67,11 @@ uint32_t linbus_probe(void)
   uint8_t  buf[3];
   int len;  
 
-  linbus->busWakeUp();
+  linbus.busWakeUp();
   for (int i = 0; i < 32; i++) {
-    linbus->writeRequest(base_addr + i);
-    len = linbus->readStream(buf, 3);
-    if (len == 3 && linbus->validateChecksum(buf, 3)) {
+    linbus.writeRequest(base_addr + i);
+    len = linbus.readStream(buf, 3);
+    if (len == 3 && linbus.validateChecksum(buf, 3)) {
       bitSet(slaves, i);      
     }
   }
@@ -87,8 +87,6 @@ void loop()
 
   bool ledOn = ((ledCounter++ & 0x07) == 0x01);
   digitalWrite(PIN_ONBOARD_LED, ledOn);
-
-
 
   int elapsed = millis() - topOfLoop;
   int delayMs = clamp<int>(100 - elapsed, 1, 100);
@@ -160,9 +158,9 @@ void i2c_bridge_request_event(void)
     return;
   }
   
-  linbus->write(current_linbus_id, &current_linbus_regnum, 1);
-  linbus->writeRequest(current_linbus_id);
-  linbus->readStream(buf, 2);
+  linbus.write(current_linbus_id, &current_linbus_regnum, 1);
+  linbus.writeRequest(current_linbus_id);
+  linbus.readStream(buf, 2);
   wire.write(buf, 2);
 }
 
@@ -186,5 +184,5 @@ void i2c_bridge_receive_event(uint8_t *buf, int count)
   
   count = clamp<int>(count, 2, 3);
 
-  linbus->write(current_linbus_id, buf, count);
+  linbus.write(current_linbus_id, buf, count);
 }
