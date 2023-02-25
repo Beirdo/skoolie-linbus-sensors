@@ -4,12 +4,6 @@
 [submodule "common/hardware/Beirdo-KiCad-Libraries"]
 	path = common/hardware/Beirdo-KiCad-Libraries
 	url = https://github.com/Beirdo/KiCad-Libraries
-[submodule "hardware/git-libraries/SparkFun-KiCad-Libraries"]
-	path = hardware/git-libraries/SparkFun-KiCad-Libraries
-	url = https://github.com/Beirdo/SparkFun-KiCad-Libraries
-[submodule "hardware/git-libraries/Beirdo-KiCad-Libraries"]
-	path = hardware/git-libraries/Beirdo-KiCad-Libraries
-	url = https://github.com/Beirdo/KiCad-Libraries
 [submodule "firmware/lin-valve-control/libs/Arduino-LIN"]
 	path = firmware/lin-valve-control/libs/Arduino-LIN
 	url = https://github.com/Beirdo/Arduino-LIN.git
