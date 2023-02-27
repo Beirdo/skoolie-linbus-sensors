@@ -35,7 +35,7 @@ void init_linbus(uint8_t address)
 void update_linbus(void)
 {
   int value = analogRead(PIN_VTHERMO0);
-  int resistance = value * 10000 / (4096 / value);
+  int resistance = value * 10000 / (4096 - value);
   int temperature = thermistor.lookup(resistance);
 
   registers[REG_COOLANT_TEMP0_HI].write(HI_BYTE(temperature), true);
