@@ -17,7 +17,7 @@ void reset_isr(void)
   reboot();
 }
 
-void setup() 
+void setup()
 {
   pinMode(PIN_PUMP_EN, OUTPUT);
   digitalWrite(PIN_PUMP_EN, LOW);
