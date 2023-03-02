@@ -5,6 +5,7 @@
 #include "project.h"
 #include "linbus_interface.h"
 #include "linbus_registers.h"
+#include "ina219.h"
 
 uint8_t registerIndex = 0xFF;
 uint8_t linbus_address;
@@ -15,6 +16,8 @@ LINBusRegister registers[] = {
   LINBusRegister(0x00, BOARD_TYPE_PUMP_CONTROL),
   LINBusRegister(0xFF, 0xFF),
   LINBusRegister(0x01, 0x00),
+  LINBusRegister(0x00, 0x00),
+  LINBusRegister(0x00, 0x00),
 };
 
 LINBus_stack linbus(Serial, 19200);
@@ -30,7 +33,9 @@ void init_linbus(uint8_t address)
 
 void update_linbus(void)
 {
-  // Nothing to update yet
+  uint16_t current = abs(ina219.getCurrent_mA());
+  registers[REG_PUMP_CURRENT_HI] = HI_BYTE(current);
+  registers[REG_PUMP_CURRENT_LO] = LO_BYTE(current);
 }
 
 void process_linbus(void)
