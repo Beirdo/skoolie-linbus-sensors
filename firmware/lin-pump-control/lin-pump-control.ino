@@ -4,7 +4,10 @@
 #include <Adafruit_LiquidCrystal.h>
 #include <EEPROM.h>
 
+#ifndef DISABLE_LOGGING
 #define DISABLE_LOGGING
+#endif
+
 #include "project.h"
 #include "linbus_interface.h"
 #include "ina219.h"
@@ -46,7 +49,7 @@ void setup()
 
   init_linbus(linbus_address);
 
-  ina219.begin(12, 320, 100, 12, 64);
+  ina219.begin(12, 320, 100, 12, 64);    
 }
 
 void loop() 

@@ -1522,7 +1522,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid eb021f3c-df42-4a45-b1e1-a4521e197f36)
     (property "Reference" "R11" (id 0) (at 179.578 101.6 90))
-    (property "Value" "100m 1% 2W" (id 1) (at 179.578 104.14 90))
+    (property "Value" "22m 1% 5W" (id 1) (at 179.578 104.14 90))
     (property "Footprint" "Resistor_SMD:R_2512_6332Metric_Pad1.40x3.35mm_HandSolder" (id 2) (at 179.578 109.093 90)
       (effects (font (size 1.27 1.27)) hide)
     )

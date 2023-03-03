@@ -24,7 +24,7 @@ LINBus_stack linbus(Serial, 19200);
 
 void init_linbus(uint8_t address)
 {
-  uint8_t location = EEPROM.read(0);
+  uint8_t location = EEPROM[1];
   registers[REG_LOCATION].write(location);
 
   linbus_address = address & 0x1F;
@@ -60,7 +60,7 @@ void process_linbus(void)
         if (addr == REG_PUMP_CONTROL) {
           digitalWrite(PIN_PUMP_EN, data);
         } else if (addr == REG_LOCATION) {
-          EEPROM.update(0, data);
+          EEPROM.update(1, data);
         }
       }
     } else {

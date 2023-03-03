@@ -1,13 +1,17 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <LINBus_stack.h>
-#include <PCA9536D.h>
 #include <Adafruit_LiquidCrystal.h>
+#include <EEPROM.h>
+
+#ifndef DISABLE_LOGGING
+#define DISABLE_LOGGING
+#endif
 
 #include "project.h"
 #include "linbus_interface.h"
+#include "ina219.h"
 
-PCA9536 pca9536;
 
 void reset_isr(void);
 
@@ -34,18 +38,19 @@ void setup()
   pinMode(PIN_LED, OUTPUT);
   digitalWrite(PIN_LED, LOW);
 
-  // Get the LINBus ID (0x00-0x0F) from PCA9536 - we could do 0x00-0x1F if needed
-  pca9536.begin();
-
-  linbus_address = 0x00;
-  if (pca9536.isConnected()) { 
-    for (int i = 0; i < 4; i++) {
-      pca9536.pinMode(i, INPUT);    
-      linbus_address |= pca9536.digitalRead(i) ? BIT(i) : 0;
+  linbus_address = EEPROM[0];
+  if (linbus_address == 0xFF) {
+    bool led = false;
+    while(1) {
+      led = !led;
+      digitalWrite(PIN_LED, led);
+      delay(100);
     }
   }
 
   init_linbus(linbus_address);
+
+  ina219.begin(12, 320, 22, 12, 64);
 }
 
 void loop() 

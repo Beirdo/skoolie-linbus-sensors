@@ -5,6 +5,7 @@
 #include "project.h"
 #include "linbus_interface.h"
 #include "linbus_registers.h"
+#include "ina219.h"
 
 uint8_t registerIndex = 0xFF;
 uint8_t linbus_address;
@@ -15,6 +16,8 @@ LINBusRegister registers[] = {
   LINBusRegister(0x00, BOARD_TYPE_PELTIER_CONTROL),
   LINBusRegister(0xFF, 0xFF),
   LINBusRegister(0x01, 0x00),
+  LINBusRegister(0x00, 0x00),
+  LINBusRegister(0x00, 0x00),
 };
 
 LINBus_stack linbus(Serial, 19200);
@@ -30,7 +33,9 @@ void init_linbus(uint8_t address)
 
 void update_linbus(void)
 {
-  // Nothing to update yet
+  uint16_t current = abs(ina219.getCurrent_mA());
+  registers[REG_PELTIER_CURRENT_HI] = HI_BYTE(current);
+  registers[REG_PELTIER_CURRENT_LO] = LO_BYTE(current);
 }
 
 void process_linbus(void)
@@ -55,7 +60,7 @@ void process_linbus(void)
         if (addr == REG_PELTIER_CONTROL) {
           digitalWrite(PIN_PELTIER_EN, data);
         } else if (addr == REG_LOCATION) {
-          EEPROM.update(0, data);
+          EEPROM.update(1, data);
         }
       }
     } else {
