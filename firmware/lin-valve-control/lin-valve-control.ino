@@ -1,14 +1,16 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include <LINBus_stack.h>
-#include <PCA9536D.h>
-#include <SparkFun_TCA9534.h>
+#include <TCA9534-GPIO.h>
 #include <Adafruit_LiquidCrystal.h>
+#include <linbus_interface.h>
+
+#ifndef DISABLE_LOGGING
+#define DISABLE_LOGGING
+#endif
 
 #include "project.h"
 #include "linbus_interface.h"
 
-PCA9536 pca9536;
 TCA9534 tca9534;
 
 void reset_isr(void);
@@ -51,43 +53,26 @@ void setup()
   pinMode(PIN_PHASE_PWM, OUTPUT);
   setPhasePWM(false, false);
 
-  // Get the LINBus ID (0x00-0x0F) from PCA9536 - we could do 0x00-0x1F if needed
-  pca9536.begin();
-
-  linbus_address = 0x00;
-  if (pca9536.isConnected()) { 
-    for (int i = 0; i < 4; i++) {
-      pca9536.pinMode(i, INPUT);    
-      linbus_address |= pca9536.digitalRead(i) ? BIT(i) : 0;
-    }
-  }
+  pinMode(PIN_LED, OUTPUT);
+  digitalWrite(PIN_LED, HIGH);
 
   // Setup inputs and outputs on the TCA9534
   tca9534.begin(Wire, I2C_ADDR_TCA9534);
-
-  tca9534.pinMode(PIN_LED, OUTPUT);
-  tca9534.digitalWrite(PIN_LED, HIGH);
 
   tca9534.pinMode(PIN_ENABLE, OUTPUT);
   tca9534.digitalWrite(PIN_ENABLE, LOW);  
 
   tca9534.pinMode(PIN_SLEEP, OUTPUT);
-  tca9534.invertPin(PIN_SLEEP, INVERT);
+  tca9534.invertPin(PIN_SLEEP, TCA9534_INVERT);
   tca9534.digitalWrite(PIN_SLEEP, HIGH);    // Actually (active) low.
 
   tca9534.pinMode(PIN_VALVE_CLOSED, INPUT);
   tca9534.pinMode(PIN_VALVE_OPENED, INPUT);
 
   tca9534.pinMode(PIN_FAULT, INPUT);
-  tca9534.invertPin(PIN_FAULT, INVERT);
+  tca9534.invertPin(PIN_FAULT, TCA9534_INVERT);
 
-  tca9534.pinMode(PIN_LIN_SLP, OUTPUT);
-  tca9534.digitalWrite(PIN_LIN_SLP, LOW);
-    
-  tca9534.pinMode(PIN_LIN_WAKE, OUTPUT);
-  tca9534.digitalWrite(PIN_LIN_WAKE, LOW);
-
-  init_linbus(linbus_address);
+  init_linbus(PIN_LIN_SLP, PIN_LIN_WAKE, PIN_LED);
 }
 
 void loop() 
@@ -96,7 +81,7 @@ void loop()
   int topOfLoop = millis();
 
   bool ledOn = ((ledCounter++ & 0x07) == 0x01);
-  tca9534.digitalWrite(PIN_LED, ledOn);
+  digitalWrite(PIN_LED, ledOn);
 
   update_linbus();
   process_linbus();

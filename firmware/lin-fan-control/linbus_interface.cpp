@@ -1,19 +1,18 @@
 #include <Arduino.h>
-#include <LINBus_stack.h>
 #include <LM96163.h>
+#include <linbus_map.h>
+#include <linbus_registers.h>
+#include <linbus_interface.h>
 #include <Wire.h>
-#include <EEPROM.h>
 
 #include "project.h"
-#include "linbus_interface.h"
-#include "linbus_registers.h"
+#include "register_bank.h"
 
-uint8_t registerIndex = 0xFF;
-uint8_t linbus_address;
-uint8_t linbus_buf[2];
-uint8_t linbus_buf_len = 2;
+int maxRegisters = MAX_REGISTERS;
+int regLocation = REG_LOCATION;
 
-LINBusRegister registers[] = {
+
+LINBusRegister registers[MAX_REGISTERS] = {
   LINBusRegister(0x00, BOARD_TYPE_FAN_CONTROL),
   LINBusRegister(0xFF, 0xFF),
   LINBusRegister(0xFF, 0x00),
@@ -24,9 +23,8 @@ LINBusRegister registers[] = {
   LINBusRegister(0x00, 0x00),
   LINBusRegister(0x5B, 0x00),
   LINBusRegister(0x00, 0x00),
+  LINBusRegister(0x00, 0x00),
 };
-
-LINBus_stack linbus(Serial, 19200);
 
 // Lookup table for the fan when in heating mode
 // The hotter the exhaust air, the lower the fan needs to run
@@ -65,16 +63,6 @@ const LM96163_LUT_t cool_lut[12] = {
   };
 uint8_t cool_hysteresis = 2;
 
-void init_linbus(uint8_t address)
-{
-  uint8_t location = EEPROM.read(0);
-  registers[REG_LOCATION].write(location);
-
-  linbus_address = address & 0x1F;
-  linbus.begin(PIN_LIN_WAKE, PIN_LIN_SLP, linbus_address);
-
-  lm96163.begin(&Wire, PIN_ALERT, PIN_TCRIT);
-}
 
 void update_linbus(void)
 {
@@ -101,53 +89,21 @@ void update_linbus(void)
   registers[REG_POR_STATUS].write(lm96163.getStatus(LM96163_STATUS_POR_STATUS), true);
 }
 
-void process_linbus(void)
+void dispatch_linbus(uint8_t index, uint8_t value)
 {
-  size_t read_;
+  if (index == REG_FAN_CONTROL) {
+    uint8_t pwm_value = clamp<uint8_t>((value & 0x7F), 0, 100);
+    bool heat = (value & 0xC0) == 0x80;
+    bool cool = (value & 0xC0) == 0xC0;
 
-  if (!linbus.waitBreak(50)) {
-    return;    
-  }
-
-  if (linbus.read(linbus_buf, linbus_buf_len, &read_)) {
-    if (read_) { 
-      uint8_t addr = linbus_buf[0];
-      uint8_t data = linbus_buf[1];
-
-      if (addr & 0x80) {
-        registerIndex = addr & 0x7F;
-      } else if (addr < MAX_REGISTERS) {
-        // this was a packet written to us
-        registers[addr].write(data);
-
-        if (addr == REG_FAN_CONTROL) {
-          uint8_t pwm_value = clamp<uint8_t>((data & 0x3F) << 2, 0, 100);
-          bool heat = data & 0x80;
-          bool cool = data & 0x40;
-
-          if (!heat && !cool) {
-            lm96163.fanOnOff(true, pwm_value);
-          } else if (heat) {
-            lm96163.setLUT((LM96163_LUT_t *)heat_lut, heat_hysteresis);
-          } else {
-            lm96163.setLUT((LM96163_LUT_t *)cool_lut, cool_hysteresis);
-          }
-        } else if (addr == REG_ALERT_MASK) {
-          lm96163.setAlertMask(data);
-        } else if (addr == REG_LOCATION) {
-          EEPROM.update(0, data);
-        }
-      }
+    if (!heat && !cool) {
+      lm96163.fanOnOff(true, pwm_value);
+    } else if (heat) {
+      lm96163.setLUT((LM96163_LUT_t *)heat_lut, heat_hysteresis);
     } else {
-      registerIndex = clamp<int>(registerIndex, 0, MAX_REGISTERS - 1);
-      linbus_buf[0] = registerIndex < MAX_REGISTERS ? registers[registerIndex++].read() : 0x00;
-
-      registerIndex = clamp<int>(registerIndex, 0, MAX_REGISTERS - 1);
-      linbus_buf[1] = registerIndex < MAX_REGISTERS ? registers[registerIndex++].read() : 0x00;
-
-      linbus.writeResponse(linbus_buf, 2);
-    } 
-  } else {
-    linbus.sleep(STATE_SLEEP);
-  }  
+      lm96163.setLUT((LM96163_LUT_t *)cool_lut, cool_hysteresis);
+    }
+  } else if (index == REG_ALERT_MASK) {
+    lm96163.setAlertMask(value);
+  }
 }

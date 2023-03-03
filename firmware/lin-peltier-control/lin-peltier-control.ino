@@ -2,14 +2,13 @@
 #include <Wire.h>
 #include <LINBus_stack.h>
 #include <Adafruit_LiquidCrystal.h>
-#include <EEPROM.h>
+#include <linbus_interface.h>
 
 #ifndef DISABLE_LOGGING
 #define DISABLE_LOGGING
 #endif
 
 #include "project.h"
-#include "linbus_interface.h"
 #include "ina219.h"
 
 
@@ -29,28 +28,12 @@ void setup()
   pinMode(PIN_RESET, INPUT);
   attachInterrupt(digitalPinToInterrupt(PIN_RESET), reset_isr, FALLING);
 
-  pinMode(PIN_LIN_SLP, OUTPUT);
-  digitalWrite(PIN_LIN_SLP, LOW);
-    
-  pinMode(PIN_LIN_WAKE, OUTPUT);
-  digitalWrite(PIN_LIN_WAKE, LOW);
-
   pinMode(PIN_LED, OUTPUT);
   digitalWrite(PIN_LED, LOW);
 
-  linbus_address = EEPROM[0];
-  if (linbus_address == 0xFF) {
-    bool led = false;
-    while(1) {
-      led = !led;
-      digitalWrite(PIN_LED, led);
-      delay(100);
-    }
-  }
-
-  init_linbus(linbus_address);
-
   ina219.begin(12, 320, 22, 12, 64);
+
+  init_linbus(PIN_LIN_SLP, PIN_LIN_WAKE, PIN_LED);
 }
 
 void loop() 

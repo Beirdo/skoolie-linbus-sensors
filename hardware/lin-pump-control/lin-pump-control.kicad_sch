@@ -2090,7 +2090,7 @@
   )
 
   (symbol (lib_id "Device:LED") (at 101.092 142.24 90) (unit 1)
-    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (in_bom yes) (on_board yes)
     (uuid 6207584f-7c38-4289-b142-538599178a5f)
     (property "Reference" "D1" (id 0) (at 104.267 142.5574 90)
       (effects (font (size 1.27 1.27)) (justify right))
@@ -2307,7 +2307,7 @@
   )
 
   (symbol (lib_id "Device:R") (at 101.092 132.969 0) (unit 1)
-    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (in_bom yes) (on_board yes)
     (uuid c31821ad-5cf7-487a-ab49-f7b0185fd6d9)
     (property "Reference" "R5" (id 0) (at 102.997 131.6989 0)
       (effects (font (size 1.27 1.27)) (justify left))

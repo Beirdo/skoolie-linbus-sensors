@@ -1,13 +1,14 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include <LINBus_stack.h>
-#include <PCA9536D.h>
 #include <Adafruit_LiquidCrystal.h>
+#include <linbus_interface.h>
+
+#ifndef DISABLE_LOGGING
+#define DISABLE_LOGGING
+#endif
 
 #include "project.h"
-#include "linbus_interface.h"
 
-PCA9536 pca9536;
 uint16_t pulse0_count;
 uint16_t pulse1_count;
 int last_millis;
@@ -48,27 +49,10 @@ void setup()
   pinMode(PIN_RESET, INPUT);
   attachInterrupt(digitalPinToInterrupt(PIN_RESET), reset_isr, FALLING);
 
-  pinMode(PIN_LIN_SLP, OUTPUT);
-  digitalWrite(PIN_LIN_SLP, LOW);
-    
-  pinMode(PIN_LIN_WAKE, OUTPUT);
-  digitalWrite(PIN_LIN_WAKE, LOW);
-
   pinMode(PIN_LED, OUTPUT);
   digitalWrite(PIN_LED, LOW);
 
-  // Get the LINBus ID (0x00-0x0F) from PCA9536 - we could do 0x00-0x1F if needed
-  pca9536.begin();
-
-  linbus_address = 0x00;
-  if (pca9536.isConnected()) { 
-    for (int i = 0; i < 4; i++) {
-      pca9536.pinMode(i, INPUT);    
-      linbus_address |= pca9536.digitalRead(i) ? BIT(i) : 0;
-    }
-  }
-
-  init_linbus(linbus_address);
+  init_linbus(PIN_LIN_SLP, PIN_LIN_WAKE, PIN_LED);
 }
 
 void loop() 
