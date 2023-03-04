@@ -6,7 +6,7 @@
 
   (title_block
     (title "LINBus Flow Sensor")
-    (date "2023-02-18")
+    (date "2023-03-03")
     (rev "1.0")
     (company "Gavin Hurlbut")
   )
@@ -522,8 +522,8 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 119.761 98.806 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 0f03262d-b162-4b7c-b910-d4563cddae6d)
-    (property "Reference" "J4" (id 0) (at 119.761 90.043 0))
-    (property "Value" "Flow Meter" (id 1) (at 119.761 92.583 0))
+    (property "Reference" "J4" (id 0) (at 119.761 90.17 0))
+    (property "Value" "Flow 1" (id 1) (at 119.761 92.71 0))
     (property "Footprint" "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-3_1x03_P2.54mm_Horizontal" (id 2) (at 119.761 98.806 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -556,7 +556,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8b1bbc6a-3e82-4ff8-b55e-bf195b369ebb)
     (property "Reference" "J5" (id 0) (at 120.523 132.08 0))
-    (property "Value" "Flow Meter" (id 1) (at 120.523 134.62 0))
+    (property "Value" "Flow 2" (id 1) (at 120.523 134.62 0))
     (property "Footprint" "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-3_1x03_P2.54mm_Horizontal" (id 2) (at 120.523 140.843 0)
       (effects (font (size 1.27 1.27)) hide)
     )
