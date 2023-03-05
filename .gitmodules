@@ -79,3 +79,21 @@
 [submodule "firmware/lin-pump-control/lib/Adafruit-MCP23017-Arduino-Library"]
 	path = firmware/lin-pump-control/lib/Adafruit-MCP23017-Arduino-Library
 	url = https://github.com/Adafruit/Adafruit-MCP23017-Arduino-Library
+[submodule "firmware/lin-valve-control/lib/Beirdo-Utilities"]
+	path = firmware/lin-valve-control/lib/Beirdo-Utilities
+	url = https://github.com/Beirdo/arduino-common-utils
+[submodule "firmware/lin-valve-control/lib/Adafruit_LiquidCrystal"]
+	path = firmware/lin-valve-control/lib/Adafruit_LiquidCrystal
+	url = https://github.com/Adafruit/Adafruit_LiquidCrystal
+[submodule "firmware/lin-valve-control/lib/Arduino-LIN"]
+	path = firmware/lin-valve-control/lib/Arduino-LIN
+	url = https://github.com/Beirdo/Arduino-LIN
+[submodule "firmware/lin-valve-control/lib/Adafruit_BusIO"]
+	path = firmware/lin-valve-control/lib/Adafruit_BusIO
+	url = https://github.com/Adafruit/Adafruit_BusIO
+[submodule "firmware/lin-valve-control/lib/Adafruit-MCP23017-Arduino-Library"]
+	path = firmware/lin-valve-control/lib/Adafruit-MCP23017-Arduino-Library
+	url = https://github.com/Adafruit/Adafruit-MCP23017-Arduino-Library
+[submodule "firmware/lin-valve-control/lib/Arduino-TCA9534"]
+	path = firmware/lin-valve-control/lib/Arduino-TCA9534
+	url = https://github.com/Beirdo/Arduino-TCA9534
