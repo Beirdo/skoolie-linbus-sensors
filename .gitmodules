@@ -49,3 +49,18 @@
 [submodule "firmware/lin-flow-sensor/lib/Adafruit-MCP23017-Arduino-Library"]
 	path = firmware/lin-flow-sensor/lib/Adafruit-MCP23017-Arduino-Library
 	url = https://github.com/Adafruit/Adafruit-MCP23017-Arduino-Library
+[submodule "firmware/lin-peltier-control/lib/Beirdo-Utilities"]
+	path = firmware/lin-peltier-control/lib/Beirdo-Utilities
+	url = https://github.com/Beirdo/arduino-common-utils
+[submodule "firmware/lin-peltier-control/lib/Adafruit_LiquidCrystal"]
+	path = firmware/lin-peltier-control/lib/Adafruit_LiquidCrystal
+	url = https://github.com/Adafruit/Adafruit_LiquidCrystal
+[submodule "firmware/lin-peltier-control/lib/Arduino-LIN"]
+	path = firmware/lin-peltier-control/lib/Arduino-LIN
+	url = https://github.com/Beirdo/Arduino-LIN
+[submodule "firmware/lin-peltier-control/lib/Adafruit_BusIO"]
+	path = firmware/lin-peltier-control/lib/Adafruit_BusIO
+	url = https://github.com/Adafruit/Adafruit_BusIO
+[submodule "firmware/lin-peltier-control/lib/Adafruit-MCP23017-Arduino-Library"]
+	path = firmware/lin-peltier-control/lib/Adafruit-MCP23017-Arduino-Library
+	url = https://github.com/Adafruit/Adafruit-MCP23017-Arduino-Library
