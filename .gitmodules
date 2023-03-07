@@ -1,21 +1,3 @@
-[submodule "firmware/lin-coolant-temperature/Beirdo-Utilities"]
-	path = firmware/lin-coolant-temperature/Beirdo-Utilities
-	url = https://github.com/Beirdo/arduino-common-utils
-[submodule "firmware/lin-coolant-temperature/lib/Beirdo-Utilities"]
-	path = firmware/lin-coolant-temperature/lib/Beirdo-Utilities
-	url = https://github.com/Beirdo/arduino-common-utils
-[submodule "firmware/lin-coolant-temperature/lib/Adafruit_LiquidCrystal"]
-	path = firmware/lin-coolant-temperature/lib/Adafruit_LiquidCrystal
-	url = https://github.com/Adafruit/Adafruit_LiquidCrystal
-[submodule "firmware/lin-coolant-temperature/lib/Adafruit-MCP23017-Arduino-Library"]
-	path = firmware/lin-coolant-temperature/lib/Adafruit-MCP23017-Arduino-Library
-	url = https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library.git
-[submodule "firmware/lin-coolant-temperature/lib/Adafruit_BusIO"]
-	path = firmware/lin-coolant-temperature/lib/Adafruit_BusIO
-	url = https://github.com/adafruit/Adafruit_BusIO
-[submodule "firmware/lin-coolant-temperature/lib/Arduino-LIN"]
-	path = firmware/lin-coolant-temperature/lib/Arduino-LIN
-	url = https://github.com/Beirdo/Arduino-LIN
 [submodule "firmware/lin-fan-control/lib/Beirdo-Utilities"]
 	path = firmware/lin-fan-control/lib/Beirdo-Utilities
 	url = https://github.com/Beirdo/arduino-common-utils
